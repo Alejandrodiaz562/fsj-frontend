@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+ 
+  --color-myblue: rgba(15,20,30,255);
+  --color-price: rgb(0, 83, 83, 0.80);
+  --color-mygold: #c8a25d;
+  
+}
