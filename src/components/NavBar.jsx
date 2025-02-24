@@ -10,7 +10,7 @@ const NavBar = ({categories}) => {
         setIsOpen(!isOpen)
     }
 
-    const menuOpenClasses = 'shadow-[2px_5px_200px_5px_black] border-l-1 border-white bg-myblue pt-20 fixed  right-0  top-0 w-[65%] h-[100%] flex flex-col items-center transition-transform duration-800 ease-in-out sm:left-[-380px]'
+    const menuOpenClasses = 'shadow-[2px_5px_500px_5px_black] border-l-1 border-white bg-myblue pt-20 fixed  right-0  top-0 w-[65%] h-[100%] flex flex-col items-center transition-transform duration-800 ease-in-out sm:left-[-380px]'
 
     const menuCloseClasses = 'border-l-1 border-white bg-myblue pt-20 fixed right-0 top-0 w-[65%] h-[100%] flex flex-col items-center translate-x-[300px] transition-transform duration-800 ease-in-out sm:left-[-590px]'
 
@@ -19,11 +19,7 @@ const NavBar = ({categories}) => {
     return ( 
         <nav className= "bg-myblue text-white h-[10vh]  flex justify-between items-center px-[5%] sticky top-0 z-[50]" >
             
-            <Link to={'/products'} className='h-[80%]' onClick={()=> {
-                             if (window.innerWidth < 640) { // 640px = sm en Tailwind
-                                toggleMenu();
-                             }
-                        }}>
+            <Link to={'/products'} className='h-[80%]' >
                 <img src={logo} alt="" className='h-[100%]'/>
             </Link>
            
