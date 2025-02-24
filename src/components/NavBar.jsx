@@ -10,9 +10,9 @@ const NavBar = ({categories}) => {
         setIsOpen(!isOpen)
     }
 
-    const menuOpenClasses = 'rounded-xl bg-myblue fixed  right-3 top-[95px] w-[200px] h-[380px] flex flex-col items-center transition-transform duration-800 ease-in-out sm:left-[-380px]'
+    const menuOpenClasses = 'shadow-[2px_5px_500px_5px_black] border-l-1 border-white bg-myblue pt-20 fixed  right-0  top-0 w-[65%] h-[100%] flex flex-col items-center transition-transform duration-800 ease-in-out sm:left-[-380px]'
 
-    const menuCloseClasses = 'rounded-xl bg-myblue fixed right-3 top-[90px] w-[200px] h-[380px] flex flex-col items-center translate-x-[215px] transition-transform duration-400 ease-in sm:left-[-590px]'
+    const menuCloseClasses = 'border-l-1 border-white bg-myblue pt-20 fixed right-0 top-0 w-[65%] h-[100%] flex flex-col items-center translate-x-[300px] transition-transform duration-800 ease-in-out sm:left-[-590px]'
 
     const desktopClasses = 'sm:flex sm:flex-row sm:bg-transparent sm:relative sm:top-auto sm:right-auto'
 
@@ -29,18 +29,20 @@ const NavBar = ({categories}) => {
            
 
             <button className='sm:hidden h-[40%] aspect-square flex items-center justify-center' onClick={toggleMenu}>
-               {isOpen ? <FaTimes className='w-[100%] h-[100%]'/> : <FaBars className='w-[100%] h-[100%]'/>}
+                <FaBars className='w-[100%] h-[100%]'/>
             </button>
 
             <ul className={`${isOpen ? menuOpenClasses : menuCloseClasses } ${desktopClasses}`}>
-                
+                <button  className={`${isOpen ? 'sm:hidden h-[5%] aspect-square flex items-center justify-center absolute top-3 left-3' : 'sm:hidden h-[5%] aspect-square flex items-center justify-center absolute top-3 left-3'}`} onClick={toggleMenu}>
+                    <FaTimes className='w-[100%] h-[100%]'/>
+                </button>
                 {categories.map((el)=> (
-                    <li key={el} className={`${isOpen ? 'my-5 mx-5' : 'my-5 mx-5'} sm:px-2 sm:mx-2`}>
+                    <li key={el} className={`${isOpen ? 'my-5 mx-5' : 'my-5 mx-5'} text-3xl px-4 py-1 sm:px-2 sm:mx-2`}>
                         <Link to={`products/category/${el}`} onClick={()=> {
                              if (window.innerWidth < 640) { 
                                 toggleMenu();
                              }
-                        }}>{el.toUpperCase()}</Link>
+                        }} >{el.toUpperCase()}</Link>
                     </li>
                 ))}
             </ul>
