@@ -10,9 +10,9 @@ const NavBar = ({categories}) => {
         setIsOpen(!isOpen)
     }
 
-    const menuOpenClasses = 'rounded-xl bg-myblue fixed  right-3 top-[100px] w-[200px] h-[380px] flex flex-col items-center transition-transform duration-800 ease-in-out sm:left-[-380px]'
+    const menuOpenClasses = 'rounded-xl bg-myblue fixed  right-3 top-[95px] w-[200px] h-[380px] flex flex-col items-center transition-transform duration-800 ease-in-out sm:left-[-380px]'
 
-    const menuCloseClasses = 'rounded-xl bg-myblue fixed right-3 top-[100px] w-[200px] h-[380px] flex flex-col items-center translate-x-[215px] transition-transform duration-400 ease-in sm:left-[-590px]'
+    const menuCloseClasses = 'rounded-xl bg-myblue fixed right-3 top-[90px] w-[200px] h-[380px] flex flex-col items-center translate-x-[215px] transition-transform duration-400 ease-in sm:left-[-590px]'
 
     const desktopClasses = 'sm:flex sm:flex-row sm:bg-transparent sm:relative sm:top-auto sm:right-auto'
 
