@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import SkeletonProduct from './SkeletonProduct';
 
 const RenderProduct = ({id, image, price}) => {
 
@@ -11,9 +12,7 @@ const RenderProduct = ({id, image, price}) => {
             <div className='    w-[100%] aspect-square relative z-[1] rounded-md overflow-hidden shadow-[5px_5px_10px_5px_#c8a25d]'>
                 {
                     !imgLoaded && (
-                        <div className='bg-transparent absolute inset-0 flex items-center justify-center'>
-                            <span>Cargando...</span>
-                        </div>
+                        <SkeletonProduct/>
                     )
                 }
                 <img src={image} alt="" className='w-[100%] h-[100%] object-cover' onLoad={() => setImgLoaded(true)} onError={() => console.log('Error cargando la imagen')} />

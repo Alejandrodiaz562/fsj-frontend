@@ -4,9 +4,17 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Floristeria San Judas</title>
+    <link rel="stylesheet" href="/src/index.css" />
   </head>
   <body>
+    <!-- Loader inicial usando Tailwind -->
+    <div id="initial-loader" class="fixed inset-0 bg-myblue flex items-center justify-center z-50">
+      
+      <div class="w-12 h-12 border-4 border-gray-300 border-t-gray-600 rounded-full animate-spin mr-4"></div>
+      <p class="text-white text-4xl">Cargando...</p>
+    </div>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

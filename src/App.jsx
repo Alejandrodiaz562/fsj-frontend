@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
 
 //PAGES
 import PreviewCategories from "./components/PreviewCategories";
@@ -11,7 +12,13 @@ import MainLayout from "./components/MainLoyaout";
 
 function App() {
   
-
+  useEffect(() => {
+    const loader = document.getElementById("initial-loader");
+    if (loader) {
+      loader.style.display = "none";
+    }
+  }, []);
+  
   return (
     <Router>
       <Routes>

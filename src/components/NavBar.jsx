@@ -10,9 +10,9 @@ const NavBar = ({categories}) => {
         setIsOpen(!isOpen)
     }
 
-    const menuOpenClasses = 'rounded-xl bg-myblue fixed  right-2 top-14 w-[200px] h-[80%] flex flex-col items-center transition-transform duration-800 ease-in-out sm:left-[-380px]'
+    const menuOpenClasses = 'rounded-xl bg-myblue fixed  right-3 top-26 w-[200px] h-[42%] flex flex-col items-center transition-transform duration-800 ease-in-out sm:left-[-380px]'
 
-    const menuCloseClasses = 'rounded-xl bg-myblue fixed right-2 top-14 w-[200px] h-[80%] flex flex-col items-center translate-x-[210px] transition-transform duration-400 ease-in sm:left-[-590px]'
+    const menuCloseClasses = 'rounded-xl bg-myblue fixed right-3 top-26 w-[200px] h-[42%] flex flex-col items-center translate-x-[215px] transition-transform duration-400 ease-in sm:left-[-590px]'
 
     const desktopClasses = 'sm:flex sm:flex-row sm:bg-transparent sm:relative sm:top-auto sm:right-auto'
 
@@ -28,8 +28,8 @@ const NavBar = ({categories}) => {
             </Link>
            
 
-            <button className='block sm:hidden' onClick={toggleMenu}>
-               {isOpen ? <FaTimes/> : <FaBars/>}
+            <button className='sm:hidden h-[40%] aspect-square flex items-center justify-center' onClick={toggleMenu}>
+               {isOpen ? <FaTimes className='w-[100%] h-[100%]'/> : <FaBars className='w-[100%] h-[100%]'/>}
             </button>
 
             <ul className={`${isOpen ? menuOpenClasses : menuCloseClasses } ${desktopClasses}`}>
