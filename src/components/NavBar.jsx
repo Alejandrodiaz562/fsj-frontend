@@ -10,7 +10,7 @@ const NavBar = ({categories}) => {
         setIsOpen(!isOpen)
     }
 
-    const menuOpenClasses = 'shadow-[2px_5px_800px_100px_black] border-l-1 border-white bg-myblue pt-20 fixed  right-0  top-0 w-[65%] h-[100%] flex flex-col items-center transition-transform duration-800 ease-in-out sm:left-[-380px]'
+    const menuOpenClasses = 'shadow-[2px_5px_200px_5px_black] border-l-1 border-white bg-myblue pt-20 fixed  right-0  top-0 w-[65%] h-[100%] flex flex-col items-center transition-transform duration-800 ease-in-out sm:left-[-380px]'
 
     const menuCloseClasses = 'border-l-1 border-white bg-myblue pt-20 fixed right-0 top-0 w-[65%] h-[100%] flex flex-col items-center translate-x-[300px] transition-transform duration-800 ease-in-out sm:left-[-590px]'
 
