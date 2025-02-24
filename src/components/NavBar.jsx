@@ -10,7 +10,7 @@ const NavBar = ({categories}) => {
         setIsOpen(!isOpen)
     }
 
-    const menuOpenClasses = 'shadow-[2px_5px_500px_5px_black] border-l-1 border-white bg-myblue pt-20 fixed  right-0  top-0 w-[65%] h-[100%] flex flex-col items-center transition-transform duration-800 ease-in-out sm:left-[-380px]'
+    const menuOpenClasses = 'shadow-[2px_5px_800px_100px_black] border-l-1 border-white bg-myblue pt-20 fixed  right-0  top-0 w-[65%] h-[100%] flex flex-col items-center transition-transform duration-800 ease-in-out sm:left-[-380px]'
 
     const menuCloseClasses = 'border-l-1 border-white bg-myblue pt-20 fixed right-0 top-0 w-[65%] h-[100%] flex flex-col items-center translate-x-[300px] transition-transform duration-800 ease-in-out sm:left-[-590px]'
 
@@ -37,7 +37,7 @@ const NavBar = ({categories}) => {
                     <FaTimes className='w-[100%] h-[100%]'/>
                 </button>
                 {categories.map((el)=> (
-                    <li key={el} className={`${isOpen ? 'my-5 mx-5' : 'my-5 mx-5'} text-3xl px-4 py-1 sm:px-2 sm:mx-2`}>
+                    <li key={el} className={`${isOpen ? 'my-5 mx-5' : 'my-5 mx-5'} text-xl px-4 py-1 sm:px-2 sm:mx-2`}>
                         <Link to={`products/category/${el}`} onClick={()=> {
                              if (window.innerWidth < 640) { 
                                 toggleMenu();
