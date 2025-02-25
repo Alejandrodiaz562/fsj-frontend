@@ -10,11 +10,17 @@ const NavBar = ({categories}) => {
         setIsOpen(!isOpen)
     }
 
-    const menuOpenClasses = 'shadow-[2px_5px_500px_5px_black] border-l-1 border-white bg-myblue pt-20 fixed  right-0  top-0 w-[65%] h-[100%] flex flex-col items-center transition-transform duration-800 ease-in-out sm:left-[-380px]'
+    if (isOpen){
+        document.body.style.overflow = "hidden";
+    } else {
+        document.body.style.overflow = "auto";
+    }
 
-    const menuCloseClasses = 'border-l-1 border-white bg-myblue pt-20 fixed right-0 top-0 w-[65%] h-[100%] flex flex-col items-center translate-x-[300px] transition-transform duration-800 ease-in-out sm:left-[-590px]'
+    const menuOpenClasses = 'shadow-[2px_5px_500px_5px_black] border-l-1 border-white bg-myblue pt-20 fixed  right-0  top-0 w-[65%] h-[100%] flex flex-col items-center transition-transform duration-800 ease-in-out'
 
-    const desktopClasses = 'sm:flex sm:flex-row sm:bg-transparent sm:relative sm:top-auto sm:right-auto'
+    const menuCloseClasses = 'border-l-1 border-white bg-myblue pt-20 fixed right-0 top-0 w-[65%] h-[100%] flex flex-col items-center translate-x-[300px] transition-transform duration-800 ease-in-out'
+
+    const desktopClasses = 'sm:flex sm:flex-row sm:bg-transparent sm:relative sm:top-auto sm:right-auto  sm:left-[-190px] sm:bottom-[40px] sm:border-none'
 
     return ( 
         <nav className= "bg-myblue text-white h-[10vh]  flex justify-between items-center px-[5%] sticky top-0 z-[50]" >
