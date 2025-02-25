@@ -8,7 +8,7 @@ const RenderProduct = ({id, image, price}) => {
 
     
     return ( 
-        <Link to={`/product/${id}`}>
+        <Link to={`/products/${id}`}>
             <div className='    w-[100%] aspect-square relative z-[1] rounded-md overflow-hidden shadow-[5px_5px_10px_5px_#c8a25d]'>
                 {
                     !imgLoaded && (
