@@ -53,13 +53,13 @@ const ProductInfo = () => {
 
     return ( 
         <div className='bg-mygold w-[100vw] h-[100vh]'>
-            <div className='bg-myblue w-[100%] h-[100%] overflow-y-scroll'>
-                <div className='h-[50%] w-[100%] p-7'>
+            <div className='bg-myblue w-[100%] h-[100%] overflow-y-scroll p-7'>
+                <div className='h-[50%] w-[100%] mb-5'>
                     <img src={imageUrl} alt="" className='h-[100%] w-[100%] object-cover rounded-2xl'  />
                 </div>
-                <div className='w-[100%] h-[50%] text-white p-7 '>
+                <div className='w-[100%] h-[50%] text-white '>
                   <div >
-                    <p className=' text-4xl'>{convert(price)}</p>
+                    <p className=' text-2xl'>{convert(price)}</p>
                   </div>
                   <div className='py-5'>
                     <p className='text-2xl text-gray-400'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit vel aliquam voluptas ut, sint ratione ullam temporibus quo vero distinctio nostrum molestias aut sit perspiciatis qui quas deserunt ducimus quibusdam.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores doloremque illo aut maiores assumenda minima quisquam, reprehenderit aliquid, mollitia impedit esse dicta voluptatibus culpa ut, corporis quia harum ipsum officia.{description}</p>
