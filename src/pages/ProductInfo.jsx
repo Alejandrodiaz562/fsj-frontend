@@ -33,7 +33,7 @@ const ProductInfo = () => {
         }
 
     const { id } = useParams();
-    const [imageUrl, setImageUrl] = useState("")
+    const [imagesUrl, setImagesUrl] = useState([])
     const [description, setDescription] = useState("")
     const [price, setPrice] = useState("")
 
@@ -41,25 +41,27 @@ const ProductInfo = () => {
         const product = data?.find((product)=> product.id === id)
 
         if(product){
-            setImageUrl(product.images[0])
+            setImagesUrl(product.images)
             setDescription(product.description)
             setPrice(product.price)
         }
     },[id, data])
 
-    if (!imageUrl) {
-        return <h1>Loading...</h1>; // Mostrar un mensaje mientras cargas la imagen
+    console.log(imagesUrl)
+
+    if (!imagesUrl) {
+        return <h1>loading...</h1>; // Mostrar un mensaje mientras cargas la imagen
     }
 
     return ( 
         <div className='bg-mygold w-[100vw] h-[100vh]'>
             <div className='bg-myblue w-[100%] h-[100%] overflow-y-scroll'>
-                <div className='h-[50%] w-[100%] mb-5 flex overflow-x-scroll'>
-                    <img src={imageUrl} alt="" className='h-[100%] min-w-full  object-cover mr-5 '  />
-                    <img src={imageUrl} alt="" className='h-[100%] min-w-full object-cover mr-5'  />
-                    <img src={imageUrl} alt="" className='h-[100%] min-w-full object-cover mr-5'  />
-                    <img src={imageUrl} alt="" className='h-[100%] min-w-full object-cover mr-5'  />
-                    <img src={imageUrl} alt="" className='h-[100%] min-w-full object-cover'  />
+                <div className='h-[50%] w-[100%] mb-5 flex gap-1.5 overflow-x-scroll'>
+                    {
+                      imagesUrl.map((image, index)=>(
+                        <img src={imagesUrl[index]} className='h-[100%] min-w-full object-cover' key={index} alt="" />
+                      ))
+                    }
                 </div>
                 <div className='w-[100%] h-[50%] text-white pb-7 px-7 '>
                   <div >
