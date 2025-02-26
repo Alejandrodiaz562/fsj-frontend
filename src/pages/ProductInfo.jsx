@@ -53,11 +53,15 @@ const ProductInfo = () => {
 
     return ( 
         <div className='bg-mygold w-[100vw] h-[100vh]'>
-            <div className='bg-myblue w-[100%] h-[100%] overflow-y-scroll p-7'>
-                <div className='h-[50%] w-[100%] mb-5'>
-                    <img src={imageUrl} alt="" className='h-[100%] w-[100%] object-cover rounded-2xl'  />
+            <div className='bg-myblue w-[100%] h-[100%] overflow-y-scroll'>
+                <div className='h-[50%] w-[100%] mb-5 flex overflow-x-scroll'>
+                    <img src={imageUrl} alt="" className='h-[100%] min-w-full  object-cover mr-5 '  />
+                    <img src={imageUrl} alt="" className='h-[100%] min-w-full object-cover mr-5'  />
+                    <img src={imageUrl} alt="" className='h-[100%] min-w-full object-cover mr-5'  />
+                    <img src={imageUrl} alt="" className='h-[100%] min-w-full object-cover mr-5'  />
+                    <img src={imageUrl} alt="" className='h-[100%] min-w-full object-cover'  />
                 </div>
-                <div className='w-[100%] h-[50%] text-white '>
+                <div className='w-[100%] h-[50%] text-white pb-7 px-7 '>
                   <div >
                     <p className=' text-2xl'>{convert(price)}</p>
                   </div>
