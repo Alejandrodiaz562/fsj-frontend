@@ -49,26 +49,26 @@ const ProductInfo = () => {
 
     console.log(imagesUrl)
 
-    if (!imagesUrl) {
+    if (imagesUrl.length === 0) {
         return <h1>loading...</h1>; // Mostrar un mensaje mientras cargas la imagen
     }
 
     return ( 
         <div className='bg-mygold w-[100vw] h-[100vh]'>
-            <div className='bg-myblue w-[100%] h-[100%] overflow-y-scroll'>
-                <div className='h-[50%] w-[100%] mb-5 flex gap-1.5 overflow-x-scroll'>
+            <div className='bg-myblue w-[100%] h-[100%]'>
+                <div className='h-[50%] w-[100%] flex gap-1.5 overflow-x-scroll'>
                     {
                       imagesUrl.map((image, index)=>(
                         <img src={imagesUrl[index]} className='h-[100%] min-w-full object-cover' key={index} alt="" />
                       ))
                     }
                 </div>
-                <div className='w-[100%] h-[50%] text-white pb-7 px-7 '>
-                  <div >
-                    <p className=' text-2xl'>{convert(price)}</p>
+                <div className='w-[100%] h-[50%]  text-white p-7'>
+                  <div className='h-[15%]'>
+                    <p className=' text-3xl'>{convert(price)}</p>
                   </div>
-                  <div className='py-5'>
-                    <p className='text-2xl text-gray-400'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit vel aliquam voluptas ut, sint ratione ullam temporibus quo vero distinctio nostrum molestias aut sit perspiciatis qui quas deserunt ducimus quibusdam.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores doloremque illo aut maiores assumenda minima quisquam, reprehenderit aliquid, mollitia impedit esse dicta voluptatibus culpa ut, corporis quia harum ipsum officia.{description}</p>
+                  <div className='h-[85%] overflow-y-scroll'>
+                    <p className='text-2xl text-gray-400'>Lorem aliquam, quis sunt suscipit vel quisquam aliquid est modi soluta, maioorem aliquam, quis sunt suscipit vel quisquam aliquid est modi soluta, maioorem aliquam, quis sunt suscipit vel quisquam aliquid est modi soluta, maioorem aliquam, quis sunt suscipit vel quisquam aliquid est modi soluta, maioorem aliquam, quis sunt suscipit vel quisquam aliquid est modi soluta, maioorem aliquam, quis sunt suscipit vel quisquam aliquid est modi soluta, maioorem aliquam, quis sunt suscipit vel quisquam aliquid est modi soluta, maioorem aliquam, quis sunt suscipit vel quisquam aliquid est modi soluta, maioorem aliquam, quis sunt suscipit vel quisquam aliquid est modi soluta, maioorem aliquam, quis sunt suscipit vel quisquam aliquid est modi soluta, maioorem aliquam, quis sunt suscipit vel quisquam aliquid est modi soluta, maioorem aliquam, quis sunt suscipit vel quisquam aliquid est modi soluta, maioorem aliquam, quis sunt suscipit vel quisquam aliquid est modi soluta, maiores da{description}</p>
                   </div>
                 </div>
             </div>
