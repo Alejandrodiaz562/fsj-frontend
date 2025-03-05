@@ -6,9 +6,10 @@ import { useEffect } from "react";
 import PreviewCategories from "./components/PreviewCategories";
 import ProductInfo from './pages/ProductInfo'
 import AdminLogin from "./pages/AdminLogin";
-import AdminProducts from "./pages/AdminProducts";
-import Category from "./pages/Category";
+import HomeCategory from "./pages/HomeCategory";
 import MainLayout from "./components/MainLoyaout";
+import NotFound from "./pages/Notfound";
+import AddProduct from "./pages/AddProduct";
 
 function App() {
   
@@ -25,7 +26,8 @@ function App() {
         <Route element={<MainLayout/>}>
           <Route path="/" element={<PreviewCategories />} />
           <Route path="/products" element={<PreviewCategories />} />
-          <Route path="/products/category/:category" element={<Category />} />
+          <Route path="/products/category/:category" element={<HomeCategory />} />
+          
         </Route>
         
         <Route path="/products/:id" element={<ProductInfo />} />
@@ -37,7 +39,9 @@ function App() {
 
         <Route path="/admin/login" element={<AdminLogin />}></Route>
 
-        <Route path="/admin/products" element={<AdminProducts />}></Route>
+        <Route path="/admin/addproduct/:category" element={<AddProduct />}></Route>
+
+        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
     </Router>
   )

@@ -10,7 +10,9 @@ const MainLayout = () => {
             
         <div className="">
             <Navbar categories={categories}/>
-            <Outlet/>
+            <div className="">
+                <Outlet />
+            </div>
             <Footer/>
         </div>
         

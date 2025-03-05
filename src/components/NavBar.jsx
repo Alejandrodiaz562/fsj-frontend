@@ -20,7 +20,7 @@ const NavBar = ({categories}) => {
 
     const menuCloseClasses = 'border-l-1 border-white bg-myblue pt-20 fixed right-0 top-0 w-[65%] h-[100%] flex flex-col items-center translate-x-[300px] transition-transform duration-800 ease-in-out'
 
-    const desktopClasses = 'sm:flex sm:flex-row sm:bg-transparent sm:relative sm:top-auto sm:right-auto  sm:left-[-190px] sm:bottom-[40px] sm:border-none'
+    const desktopClasses = 'sm:flex sm:flex-row sm:bg-transparent sm:relative sm:top-auto sm:right-auto  sm:left-[-250px] sm:bottom-[40px] sm:border-none'
 
     return ( 
         <nav className= "bg-myblue text-white h-[10vh]  flex justify-between items-center px-[5%] sticky top-0 z-[50]" >
@@ -34,7 +34,7 @@ const NavBar = ({categories}) => {
                 <FaBars className='w-[100%] h-[100%]'/>
             </button>
 
-            <ul className={`${isOpen ? menuOpenClasses : menuCloseClasses } ${desktopClasses}`}>
+            <ul className={`${isOpen ? menuOpenClasses : menuCloseClasses } ${desktopClasses} sm:w-[48%]`}>
                 <button  className={`${isOpen ? 'sm:hidden h-[5%] aspect-square flex items-center justify-center absolute top-3 left-3' : 'sm:hidden h-[5%] aspect-square flex items-center justify-center absolute top-3 left-3'}`} onClick={toggleMenu}>
                     <FaTimes className='w-[100%] h-[100%]'/>
                 </button>

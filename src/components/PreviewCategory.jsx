@@ -24,13 +24,13 @@ const PreviewCategory = ({category, data, convert}) => {
     }, [data, category])
 
     useEffect(() => {
-        setIsGreaterThanFour(products.length >= 4);
+        setIsGreaterThanFour(products.length > 4);
     }, [products]);
 
 
     return ( 
         
-        <div className='p-1 w-[95%] my-2'>
+        <div className='p-1 w-[95%] my-2 border '>
             <div>
                 <h2 className='my-2 text-4xl p-0 flex items-center justify-center'>{category.toUpperCase()}</h2>
             </div>
