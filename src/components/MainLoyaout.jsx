@@ -5,10 +5,10 @@ import Footer from "./Footer";
 
 const MainLayout = () => {
     
-    const categories = ["ramilletes", "ramos", "cajas", "anchetas", "yugos", "funebres"]
+    const categories = ["ramilletes", "ramos", "cajas", "anchetas", "eventos", "funebres"]
     return (
             
-        <div className="">
+        <div >
             <Navbar categories={categories}/>
             <div className="">
                 <Outlet />

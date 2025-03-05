@@ -75,14 +75,20 @@ const HomeCategory = () => {
                 </div>
           )}
 
-          <div className='border max-w-[95vw] grid grid-cols-3 sm:grid-cols-6 gap-5 mb-6'>
+          <div>
             {
               products.length > 0 ? (
-                products.map((product)=>(
-                  <RenderProduct key={product.id} id={product.id} image={product.images[0]} price={convert(product.price)}></RenderProduct>
-                ))
+                <div className='max-w-[95vw] grid grid-cols-3 sm:grid-cols-6 gap-5 my-6'>
+                  {
+                    products.map((product)=>(
+                      <RenderProduct key={product.id} id={product.id} image={product.images[0]} price={convert(product.price)}></RenderProduct>
+                    ))
+                  }
+                </div>
               ) : (
-                <h1>No hay productos para mostrar</h1>
+                <div className='p-6'>
+                  <h1 className='text-4xl'>No hay productos para mostrar de la categoria {category}</h1>
+                </div>
               )
             }
           </div>

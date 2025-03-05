@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import PreviewCategory from './PreviewCategory';
 
+
 const PreviewCategories = () => {
     const [data, setData] = useState(null)
     
@@ -30,16 +31,17 @@ const PreviewCategories = () => {
             return formatoCOP
           }
 
-        const [categories, setCategories] = useState(["ramilletes", "ramos", "cajas", "anchetas", "yugos", "funebres"])
+        const [categories, setCategories] = useState(["ramilletes", "ramos", "cajas", "anchetas", "eventos", "funebres"])
         
         const bg = 'bg-[linear-gradient(90deg,#c8a25d,#f7e199,#fff4d1,#f7e199,#c8a25d)] min-h-[60vh]'
 
     return ( 
       <div className={`${bg} flex flex-col items-center`}>
-      {categories.map((el)=> (
-        <PreviewCategory category={el} key={el} data={data} convert={convert}></PreviewCategory>
-      ))}
-    </div>
+          {categories.map((el)=> (
+          <PreviewCategory category={el} key={el} data={data} convert={convert}></PreviewCategory>
+          ))}
+        </div>
+      
      );
 }
  

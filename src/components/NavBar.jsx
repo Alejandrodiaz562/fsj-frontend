@@ -16,9 +16,9 @@ const NavBar = ({categories}) => {
         document.body.style.overflow = "auto";
     }
 
-    const menuOpenClasses = 'shadow-[2px_5px_500px_5px_black] border-l-1 border-white bg-myblue pt-20 fixed  right-0  top-0 w-[65%] h-[100%] flex flex-col items-center transition-transform duration-800 ease-in-out sm:left-[-20px] sm:bottom-[40px]'
+    const menuOpenClasses = 'shadow-[2px_5px_500px_5px_black] border-l-1 border-white bg-myblue pt-20 fixed  right-0  top-0 w-[65%] h-[100%] flex flex-col items-center transition-transform duration-800 ease-in-out sm:left-[-60px] sm:bottom-[40px]'
 
-    const menuCloseClasses = 'border-l-1 border-white bg-myblue pt-20 fixed right-0 top-0 w-[65%] h-[100%] flex flex-col items-center translate-x-[300px] transition-transform duration-800 ease-in-out sm:left-[-330px] sm:bottom-[40px] '
+    const menuCloseClasses = 'border-l-1 border-white bg-myblue pt-20 fixed right-0 top-0 w-[65%] h-[100%] flex flex-col items-center translate-x-[300px] transition-transform duration-800 ease-in-out sm:left-[-365px] sm:bottom-[40px] '
 
     const desktopClasses = 'sm:flex sm:flex-row sm:bg-transparent sm:relative sm:top-auto sm:right-auto   sm:border-none'
 
