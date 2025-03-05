@@ -30,7 +30,7 @@ const PreviewCategories = () => {
             return formatoCOP
           }
 
-        const [categories, setCategories] = useState(["buquets", "ramos", "cajas", "anchetas", "yugos", "funebres"])
+        const [categories, setCategories] = useState(["ramilletes", "ramos", "cajas", "anchetas", "yugos", "funebres"])
         
         const bg = 'bg-[linear-gradient(90deg,#c8a25d,#f7e199,#fff4d1,#f7e199,#c8a25d)] min-h-[60vh]'
 

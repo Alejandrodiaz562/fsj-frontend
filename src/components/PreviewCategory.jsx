@@ -30,9 +30,9 @@ const PreviewCategory = ({category, data, convert}) => {
 
     return ( 
         
-        <div className='p-1 w-[95%] my-2 border '>
+        <div className='p-1 w-[95%] my-2'>
             <div>
-                <h2 className='my-2 text-4xl p-0 flex items-center justify-center'>{category.toUpperCase()}</h2>
+                <h2 className='my-2 mb-4 text-4xl p-0 flex items-center justify-center'>{category.toUpperCase()}</h2>
             </div>
 
             {
@@ -70,7 +70,7 @@ const PreviewCategory = ({category, data, convert}) => {
                 isGreaterThanFour && (
                     <div className='mt-6 flex justify-center'>
                         <Link to={`/products/category/${category}`}>
-                            <button className='border-1 border-black py-2 px-6 rounded-xs text-black'>Quiero ver mas productos</button>
+                            <button className='border-1 border-black py-2 px-6 rounded-xs text-black cursor-pointer'>Quiero ver mas productos</button>
                         </Link>
                     </div>
                 )
