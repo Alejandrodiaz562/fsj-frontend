@@ -50,7 +50,13 @@ const ProductInfo = () => {
     console.log(imagesUrl)
 
     if (imagesUrl.length === 0) {
-        return <h1>loading...</h1>; // Mostrar un mensaje mientras cargas la imagen
+        return (
+          <div className="fixed inset-0 bg-myblue flex items-center justify-center z-50">
+      
+            <div className="w-12 h-12 border-4 border-gray-300 border-t-gray-600 rounded-full animate-spin mr-4"></div>
+            <p className="text-white text-4xl">Cargando...</p>
+          </div>
+        ) // Mostrar un mensaje mientras cargas la imagen
     }
 
     return ( 

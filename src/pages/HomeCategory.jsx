@@ -7,6 +7,7 @@ import { auth } from "../firebaseConfig";
 
 
 import RenderProduct from '../components/RenderProduct'
+import SkeletonProduct from '../components/SkeletonProduct';
 
 
 const HomeCategory = () => {
@@ -77,7 +78,13 @@ const HomeCategory = () => {
 
           <div>
             {
-              products.length > 0 ? (
+              isLoading ? (
+                <div className='max-w-[95vw] w-[95vw] grid grid-cols-3 gap-5 sm:grid-cols-6 border'>
+                {Array.from({ length: 9 }).map((_, index) => (
+                    <SkeletonProduct key={index} />
+                ))}
+            </div>
+              ): products.length > 0 ? (
                 <div className='max-w-[95vw] grid grid-cols-3 sm:grid-cols-6 gap-5 my-6'>
                   {
                     products.map((product)=>(

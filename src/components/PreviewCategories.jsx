@@ -36,7 +36,8 @@ const PreviewCategories = () => {
         const bg = 'bg-[linear-gradient(90deg,#c8a25d,#f7e199,#fff4d1,#f7e199,#c8a25d)] min-h-[60vh]'
 
     return ( 
-      <div className={`${bg} flex flex-col items-center`}>
+
+        <div className={`${bg} flex flex-col items-center`}>
           {categories.map((el)=> (
           <PreviewCategory category={el} key={el} data={data} convert={convert}></PreviewCategory>
           ))}
