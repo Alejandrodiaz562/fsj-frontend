@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 //PAGES
 import PreviewCategories from "./components/PreviewCategories";
@@ -12,6 +12,8 @@ import NotFound from "./pages/Notfound";
 import AddProduct from "./pages/AddProduct";
 
 function App() {
+
+  const [data, setData] = useState(null)
   
   useEffect(() => {
     const loader = document.getElementById("initial-loader");
@@ -19,25 +21,59 @@ function App() {
       loader.style.display = "none";
     }
   }, []);
+
+  
+    
+    
+      useEffect(() => {
+          const fetchData = async () => {
+            try {
+              console.log("Iniciando fetch..."); // <-- Verifica que el useEffect se ejecuta
+              const response = await fetch("https://fsj-backend.onrender.com/products");
+
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+
+              const data = await response.json();
+              console.log("Data recibida:", data); // <-- Verifica si llega la data
+              setData(data);
+            } catch (err) {
+              console.error("Error fetching data:", err);
+            }
+          };
+        
+          fetchData();
+        }, []);
+
+        const convert = (value)=> {
+            const formatoCOP = new Intl.NumberFormat('es-CO', {
+              style: 'currency',
+              currency: 'COP',
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2
+            }).format(value);
+        
+            return formatoCOP
+          }
   
   return (
     <Router>
       <Routes>
         <Route element={<MainLayout/>}>
-          <Route path="/" element={<PreviewCategories />} />
-          <Route path="/products" element={<PreviewCategories />} />
-          <Route path="/products/category/:category" element={<HomeCategory />} />
-          
+          <Route path="/" element={<Navigate to={'/products'}></Navigate>}/>
+          <Route path="/products" element={<PreviewCategories data={data} convert={convert} />} />
+          <Route path="/products/category/:category" element={<HomeCategory data={data} convert={convert}/>} />
         </Route>
         
         <Route path="/products/:id" element={<ProductInfo />} />
 
         <Route
-          path="/admin"
-          element={<Navigate to={"/admin/login"}></Navigate>}>
+          path="/products/admin"
+          element={<Navigate to={"/products/admin/login"}></Navigate>}>
         </Route>
 
-        <Route path="/admin/login" element={<AdminLogin />}></Route>
+        <Route path="/products/admin/login" element={<AdminLogin />}></Route>
 
         <Route path="/admin/addproduct/:category" element={<AddProduct />}></Route>
 

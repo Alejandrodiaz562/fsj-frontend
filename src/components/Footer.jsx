@@ -1,6 +1,6 @@
 const Footer = () => {
     return ( 
-        <div className="min-h-[30vh] bg-myblue p-5">
+        <div className="min-h-[30vh] bg-myblue p-5 sm:grid sm:grid-cols-4 gap-20">
             <div className="mb-4">
                 <h2 className="text-2xl text-white ">Domicilios</h2>
                 <p className="text-gray-400">Domicilio en Medellin, Area metropolitana y municipios cercanos</p>

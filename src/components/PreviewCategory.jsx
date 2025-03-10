@@ -7,7 +7,7 @@ const PreviewCategory = ({category, data, convert}) => {
 
     const [products, setProducts] = useState([])
     const [isGreaterThanFour, setIsGreaterThanFour] = useState(false)
-    const [loading, setLoading] = useState(true);
+    
 
     useEffect(()=> {
         if (data){
@@ -15,12 +15,7 @@ const PreviewCategory = ({category, data, convert}) => {
           const filterProducts = data.filter((product) => product.category === category)
           
           setProducts(filterProducts)
-          setLoading(false);
-          
         }
-
-        
-
     }, [data, category])
 
     useEffect(() => {
@@ -36,13 +31,7 @@ const PreviewCategory = ({category, data, convert}) => {
             </div>
 
             {
-                loading ? (
-                    <div className='grid grid-cols-2 gap-5 sm:grid-cols-4'>
-                        {Array.from({ length: 4 }).map((_, index) => (
-                            <SkeletonProduct key={index} />
-                        ))}
-                    </div>
-                ) : products.length > 0 ? (
+                products.length > 0 ? (
                     <div className='grid grid-cols-2 gap-5 sm:grid-cols-4'>
                             {
                                 products.slice(0, 4).map((product) => (
