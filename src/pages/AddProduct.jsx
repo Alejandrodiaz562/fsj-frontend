@@ -12,11 +12,19 @@ const AddProduct = () => {
 
       const [images, setImages] = useState([]);
       const [loading, setLoading] = useState(false);
+      const [error, setError] = useState('')
       const navigate = useNavigate();
 
       const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+
+        if (value.length > 175) {
+          setError('No se pueden superar los 175 caracteres')
+        } else {
+          setError('')
+          setFormData({ ...formData, [name]: value });
+        }
+        
       };
       
       const handleImageChange = (e) => {
@@ -89,6 +97,7 @@ const AddProduct = () => {
               onChange={handleChange}
               required
             />
+            {error && <p className="text-red-500">{error}</p>}
             <input
               name="description"
               type="text"

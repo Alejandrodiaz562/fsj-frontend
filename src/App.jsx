@@ -66,7 +66,7 @@ function App() {
           <Route path="/products/category/:category" element={<HomeCategory data={data} convert={convert}/>} />
         </Route>
         
-        <Route path="/products/:id" element={<ProductInfo />} />
+        <Route path="/products/:id" element={<ProductInfo data={data} convert={convert}/>} />
 
         <Route
           path="/products/admin"
