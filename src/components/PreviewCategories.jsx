@@ -11,10 +11,13 @@ const PreviewCategories = ({data, convert}) => {
         const [loading, setLoading] = useState(false)
         
         const bg = 'bg-[linear-gradient(90deg,#c8a25d,#f7e199,#fff4d1,#f7e199,#c8a25d)] min-h-[60vh]'
-
+        
         useEffect(() => {
+          
           setLoading(!data);
         }, [data]);
+
+        
 
         if (loading) {
           return (
@@ -42,7 +45,6 @@ const PreviewCategories = ({data, convert}) => {
         <div className={`${bg} flex flex-col items-center`}>
 
           {categories.map((el)=> (
-            
           <PreviewCategory category={el} key={el} data={data} convert={convert}></PreviewCategory>
           ))}
         </div>

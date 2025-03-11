@@ -24,8 +24,8 @@ const HomeCategory = ({data, convert}) => {
       useEffect(()=>{
         if (data) {
           const filterProducts = data.filter((product) => product.category === category)
-
-          setProducts(filterProducts)
+          const sortedProducts = [...filterProducts].sort((a, b) => a.price - b.price);
+            setProducts(sortedProducts)
           setLoading(false)
         }
       }, [data, category])

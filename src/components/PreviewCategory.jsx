@@ -12,9 +12,9 @@ const PreviewCategory = ({category, data, convert}) => {
     useEffect(()=> {
         if (data){
             
-          const filterProducts = data.filter((product) => product.category === category)
-          
-          setProducts(filterProducts)
+            const filterProducts = data.filter((product) => product.category === category)
+            const sortedProducts = [...filterProducts].sort((a, b) => a.price - b.price);
+            setProducts(sortedProducts)
         }
     }, [data, category])
 

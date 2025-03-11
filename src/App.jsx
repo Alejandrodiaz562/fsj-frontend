@@ -36,7 +36,7 @@ function App() {
               }
 
               const data = await response.json();
-              console.log("Data recibida:", data); // <-- Verifica si llega la data
+              
               setData(data);
             } catch (err) {
               console.error("Error fetching data:", err);
