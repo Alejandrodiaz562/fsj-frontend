@@ -47,7 +47,7 @@ const ProductInfo = ({data, convert}) => {
                     <p className=' text-2xl'>{convert(price)}</p>
                   </div>
                   <div className='h-[85%]'>
-                    <p className='text-xl text-gray-400'>{description} buenas tardes a todos los participantes de este program</p>
+                    <p className='text-xl text-gray-400'>{description}</p>
                   </div>
                 </div>
             </div>
