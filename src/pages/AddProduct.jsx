@@ -1,117 +1,100 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
 
-    const {category} = useParams()
-    const [formData, setFormData] = useState({
-        price: '',
-        description: '',
-      });
+  const {category} = useParams()
+  const fileInputRef = useRef(null)
+  const fileInputRefsImages = useRef([])
+  const buttonRef = useRef(null); // Referencia al botón
+  const [images, setImages] = useState([])
+  const [errorImage, setErrorImage] = useState('')
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  
 
-      const [images, setImages] = useState([]);
-      const [loading, setLoading] = useState(false);
-      const [error, setError] = useState('')
-      const navigate = useNavigate();
+  const handleImageChange = (e) => {
+    const selectedFiles = Array.from(e.target.files)
 
-      const handleChange = (e) => {
-        const { name, value } = e.target;
+    if (images.length + selectedFiles.length > 12) {
+      setErrorImage("Numero maximo de imagenes superado!!! (12)");
+      setIsButtonDisabled(true); // Deshabilita el botón
+      return;
+    }
 
-        if (value.length > 175) {
-          setError('No se pueden superar los 175 caracteres')
-        } else {
-          setError('')
-          setFormData({ ...formData, [name]: value });
-        }
-        
-      };
-      
-      const handleImageChange = (e) => {
-        // Convertir FileList a Array para poder manipularlo fácilmente
-        setImages(Array.from(e.target.files));
-      };
-
-      const handleSubmit = async (e) => {
-
-        const respuesta = confirm(`seguro que deseas agregar este producto a la categoria ${category}`)
-
-        if (respuesta) {
-          e.preventDefault();
-        setLoading(true);
+    setErrorImage(""); // Limpia el error si todo está bien
+    setImages((prevImages) => [...prevImages, ...selectedFiles]);
     
-        const productData = new FormData();
-       
-        productData.append('price', formData.price);
-        productData.append('description', formData.description);
-        productData.append('category', category);
-        images.forEach((image, index) => {
-          productData.append('photos', image);  // O usa 'photos[]' si el backend espera un array
-        });  // Aquí aseguramos que el nombre coincida con el backend
-    
-        try {
-          const response = await fetch('https://fsj-backend.onrender.com/products', {
-            method: 'POST',
-            body: productData,})
-    
-          if (response.ok) {
-            alert('Producto agregado correctamente!')
-            navigate(`/products/category/${category}`)
-          } else {
-            throw new Error('No se pudo agregar el producto')
-          }
-        } catch (err) {
-          console.error('Error al agregar el producto', err)
-          alert('no se puedo agregar el producto')
-        } finally {
-          setLoading(false)
-        }
-        } else {
-          return
-        }
-        
-    
-        }
+  }
 
-    return ( 
-        <div className="h-[100vh] w-[100vw] bg-myblue  text-white">
-            <form onSubmit={handleSubmit}>
-                <h2>Añade un articulo</h2>
-                <div>
-                    <img src={images[0]} alt="" />
-                </div>
-                <div>
-                    <input
-                        type="file"
-                        accept=".jpg"
-                        onChange={handleImageChange}
-                        required
-                        multiple
-                    />
-                </div>
-                <input
-              name="price"
-              type="number"
-              placeholder="Precio"
-              value={formData.price}
-              onChange={handleChange}
-              required
-            />
-            {error && <p className="text-red-500">{error}</p>}
-            <input
-              name="description"
-              type="text"
-              placeholder="Descripción"
-              value={formData.description}
-              onChange={handleChange}
-              required
-            />
-            <button type="submit" disabled={loading}>
-          {loading ? 'Agregando...' : 'Agregar Producto'}
+  const handleReplaceImage = (e, index) => {
+    const selectedFile = e.target.files[0]
+   
+    setImages((prevImages) => {
+      const updatedImages = [...prevImages]; // Clonamos el array
+      updatedImages[index] = selectedFile
+      return updatedImages
+    }) 
+  }
+
+  useEffect(() => {
+    if (buttonRef.current) {
+      buttonRef.current.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+    }
+    setIsButtonDisabled(images.length >= 12);
+  }, [images]);
+  
+
+  return ( 
+    <div>
+      <h1>Añade un articulo</h1>
+      <form className="bg-red-400 w-[100vw] h-[40vh] flex overflow-x-scroll">
+      {
+          images.length > 0 && images.map((image, index)=>(
+            <div className="w-[80vw] h-[100%] flex-shrink-0" key={index}>
+              <img
+                src={URL.createObjectURL(image)}
+                className="w-[100%] h-[100%] object-cover"
+                onClick={() => fileInputRefsImages.current[index]?.click()}
+              >
+              </img>
+              <input
+                type="file"
+                accept=".jpg"
+                ref={(el) => fileInputRefsImages.current[index] = el}
+                onChange={(e) => handleReplaceImage(e, index)}
+                className="hidden"
+
+              />
+             
+            </div>
+            
+          ))
+        }
+        <button
+          type="button"
+          disabled={isButtonDisabled}
+          ref={buttonRef}
+          className={`bg-gray-600 text-amber-50 w-[80vw] h-[100%] flex-shrink-0 ${isButtonDisabled ? 'hidden' : ''}`}
+          onClick={() => fileInputRef.current.click()}
+        >
+          + Añadir fotos
         </button>
-            </form>
-        </div>
-     );
+        <input 
+          type="file"
+          accept=".jpg"
+          multiple
+          ref={fileInputRef}
+          onChange={handleImageChange}
+          className="hidden"
+        />
+       
+        
+        
+      </form>
+      <p className="text-red-600">{errorImage ? errorImage : ''}</p>
+    </div>
+  );
 }
  
 export default AddProduct;

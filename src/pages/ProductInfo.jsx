@@ -34,7 +34,7 @@ const ProductInfo = ({data, convert}) => {
 
     return ( 
         <div className='bg-black w-[100vw] h-[100vh] sm:overflow-y-hidden sm:flex sm:items-center sm:justify-center'>
-            <div className='bg-myblue w-[100%] h-[100%] sm:w-[20%] sm:h-[95%] rounded-xl overflow-hidden'>
+            <div className='bg-myblue w-[100%] h-[100%] sm:w-[20%] sm:h-[95%] rounded-xl sm:overflow-hidden'>
                 <div className='h-[50%] w-[100%] flex gap-1.5 overflow-x-scroll sm:h-[55%] sm:min-w-[50%]'>
                     {
                       imagesUrl.map((image, index)=>(
