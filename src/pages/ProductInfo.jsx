@@ -20,17 +20,6 @@ const ProductInfo = ({data, convert}) => {
         }
     },[id, data])
 
-    
-
-    /*if (imagesUrl.length === 0) {
-        return (
-          <div className="fixed inset-0 bg-myblue flex items-center justify-center z-50">
-      
-            <div className="w-12 h-12 border-4 border-gray-300 border-t-gray-600 rounded-full animate-spin mr-4"></div>
-            <p className="text-white text-4xl">Cargando...</p>
-          </div>
-        ) // Mostrar un mensaje mientras cargas la imagen
-    }*/
 
     return ( 
         <div className='bg-black w-[100vw] h-[100vh] sm:overflow-y-hidden sm:flex sm:items-center sm:justify-center'>
@@ -42,12 +31,12 @@ const ProductInfo = ({data, convert}) => {
                       ))
                     }
                 </div>
-                <div className='w-[100%] h-[50%]  text-white p-2 sm:p-4 sm:h-[100%]'>
-                  <div className='h-[15%] sm:h-[8%]'>
-                    <p className=' text-2xl'>{convert(price)}</p>
+                <div className='w-[100%] h-[50%]  text-white p-4 sm:p-3 sm:h-[100%]'>
+                  <div className='h-[10%] sm:h-[6%]'>
+                    <p className='text-2xl sm:text-xl'>{convert(price)}</p>
                   </div>
                   <div className='h-[85%]'>
-                    <p className='text-xl text-gray-400'>{description}</p>
+                    <p className='text-2xl sm:text-base  text-gray-400 break-words'>{description}</p>
                   </div>
                 </div>
             </div>
