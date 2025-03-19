@@ -20,6 +20,13 @@ const AddProduct = () => {
      
       setButtonText('No se pueden agregar mas fotos')
     }
+
+    if (selectedFiles.length > 12) {
+      alert('No puedes agregar mas de 12 fotos')
+
+      setButtonText('+ Agregar fotos')
+      return
+    }
   
     setImages((prevImages) => [...prevImages, ...selectedFiles]);
   }
