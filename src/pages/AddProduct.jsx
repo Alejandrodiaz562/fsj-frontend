@@ -8,23 +8,20 @@ const AddProduct = () => {
   const fileInputRef = useRef(null)
   const fileInputRefsImages = useRef([])
   const buttonRef = useRef(null); // Referencia al botón
+  const [buttonText, setButtonText] = useState('+ Agregar fotos')
   const [images, setImages] = useState([])
-  const [errorImage, setErrorImage] = useState('')
-  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const handleImageChange = (e) => {
     const selectedFiles = Array.from(e.target.files)
 
-    if (images.length + selectedFiles.length > 12) {
-      setErrorImage("Numero maximo de imagenes superado!!! (12)");
-      setIsButtonDisabled(true); // Deshabilita el botón
-      return;
+    if (images.length + selectedFiles.length > 11) {
+     
+      setButtonText('No se pueden agregar mas fotos')
     }
-
-    setErrorImage(""); // Limpia el error si todo está bien
+  
     setImages((prevImages) => [...prevImages, ...selectedFiles]);
-    
   }
 
   const handleReplaceImage = (e, index) => {
@@ -41,21 +38,37 @@ const AddProduct = () => {
     if (buttonRef.current) {
       buttonRef.current.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
     }
-    setIsButtonDisabled(images.length >= 12);
+    setIsButtonDisabled(images.length > 11);
   }, [images]);
   
 
   return ( 
-    <div>
-      <h1>Añade un articulo</h1>
-      <form className="bg-red-400 w-[100vw] h-[40vh] flex overflow-x-scroll">
+    <div className="w-[100vw] h-[100vh] sm:flex sm:justify-center sm:items-center bg-black">
+      <div className="sm:w-[20%] sm:h-[95%] bg-myblue rounded-2xl">
+      <h1 className="text-center text-white py-2">Añade un articulo</h1>
+      <form className="w-[100vw] h-[40vh] flex overflow-x-scroll sm:w-[100%]">
       {
           images.length > 0 && images.map((image, index)=>(
-            <div className="w-[80vw] h-[100%] flex-shrink-0" key={index}>
+            <div className="w-[80%] h-[100%] flex-shrink-0 p-1" key={index}>
               <img
                 src={URL.createObjectURL(image)}
-                className="w-[100%] h-[100%] object-cover"
-                onClick={() => fileInputRefsImages.current[index]?.click()}
+                className="w-[100%] h-[100%] object-cover rounded-xl"
+                onClick={() => {
+                  const respuesta = confirm('Deseas editar la imagen?')
+
+                  if(respuesta){
+                    fileInputRefsImages.current[index]?.click()
+                  } else {
+                    const respuesta2 = confirm('La deseas eliminar')
+                    if (respuesta2){
+                     const newImages = images.filter(el => el !== image)
+                     setImages(newImages)
+                     setButtonText('+ Agregar fotos')
+                    } else{
+                      return
+                    }
+                  }
+                }}
               >
               </img>
               <input
@@ -71,14 +84,15 @@ const AddProduct = () => {
             
           ))
         }
+        <div className={`w-[80vw] h-[100%] sm:w-[80%] flex-shrink-0 p-1 mr-1${isButtonDisabled ? 'hidden' : ''}`}>
         <button
           type="button"
           disabled={isButtonDisabled}
           ref={buttonRef}
-          className={`bg-gray-600 text-amber-50 w-[80vw] h-[100%] flex-shrink-0 ${isButtonDisabled ? 'hidden' : ''}`}
+          className='bg-gray-600 text-amber-50 w-[100%] h-[100%] rounded-2xl'
           onClick={() => fileInputRef.current.click()}
         >
-          + Añadir fotos
+          {buttonText}
         </button>
         <input 
           type="file"
@@ -88,11 +102,13 @@ const AddProduct = () => {
           onChange={handleImageChange}
           className="hidden"
         />
+        </div>
        
         
         
       </form>
-      <p className="text-red-600">{errorImage ? errorImage : ''}</p>
+      
+      </div>
     </div>
   );
 }
