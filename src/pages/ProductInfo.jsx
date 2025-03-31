@@ -1,6 +1,11 @@
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebaseConfig";
+import eliminar from '../img/eliminar.png'
+import editar from '../img/boton-editar.png'
+
+
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import entradaFlori from '../img/entradaflori.jpg'
 const ProductInfo = ({data, convert}) => {
 
     
@@ -9,6 +14,7 @@ const ProductInfo = ({data, convert}) => {
     const [imagesUrl, setImagesUrl] = useState([])
     const [description, setDescription] = useState("")
     const [price, setPrice] = useState("")
+    const [user, setUser] = useState(null);
 
     useEffect(()=> {
         const product = data?.find((product)=> product.id === id)
@@ -19,6 +25,15 @@ const ProductInfo = ({data, convert}) => {
             setPrice(product.price)
         }
     },[id, data])
+
+    useEffect(()=>{
+      const unsubscribe = onAuthStateChanged(auth, (user)=>{
+        console.log("Usuario autenticado:", user); 
+        setUser(user)
+      })
+
+      return () => unsubscribe()
+    }, [])
 
 
     return ( 
@@ -35,8 +50,21 @@ const ProductInfo = ({data, convert}) => {
                   <div className='h-[10%] sm:h-[6%]'>
                     <p className='text-2xl sm:text-xl'>{convert(price)}</p>
                   </div>
-                  <div className='h-[85%]'>
-                    <p className='text-2xl sm:text-base  text-gray-400 break-words'>{description}</p>
+                  <div className='h-[60%] sm:h-[25%]'>
+                    <p className='text-2xl sm:text-base  text-gray-400 break-words'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, dolores, distinctio dolorum iste exercitationem recusandae eligendi commodi quasi fuga fugit aliquid incidunt tempora ipsam aperiam eum</p>
+                  </div>
+                  <div>
+                  {user && user.email === "alejodv562@gmail.com" && (
+                    <div className="h-[100px] flex justify-end items-end ">
+                      <button className="bg-white px-4 py-2 border   cursor-pointer rounded-xl mr-5">
+                        <img className="h-[40px]" src={editar} alt="" />
+                      </button>
+                      <button className="bg-white px-4 py-2 border   cursor-pointer rounded-xl">
+                        <img className="h-[40px]" src={eliminar} alt="" />
+                      </button>
+
+                    </div>
+                  )}
                   </div>
                 </div>
             </div>

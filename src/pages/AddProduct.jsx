@@ -49,7 +49,7 @@ const AddProduct = () => {
   const handlePriceChange = (e) => {
     const {name, value} = e.target
     if (value.length > 6) {
-      setErrorPrice('No puede valer mas de un millon de pesos')
+      setErrorPrice('El precio no puede tener mas de 6 digitos')
     } else {
       setErrorPrice('')
       setFormData({...formData, [name]:value})
@@ -58,8 +58,8 @@ const AddProduct = () => {
 
   const handleDescriptionChange = (e) => {
     const { name, value } = e.target
-    if (value.length > 175) {
-      setErrorDes('No se pueden superar los 175 caracteres')
+    if (value.length > 155) {
+      setErrorDes('No se pueden superar los 155 caracteres')
     } else {
       setErrorDes('')
       setFormData({ ...formData, [name]: value });
@@ -192,7 +192,6 @@ const AddProduct = () => {
               placeholder="Descripción"
               onChange={handleDescriptionChange}
               value={formData.description}
-              required
               className="mb-1 resize-y min-h-[120px]"
               
             
