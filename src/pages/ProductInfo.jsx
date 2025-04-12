@@ -6,6 +6,7 @@ import editar from '../img/boton-editar.png'
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 const ProductInfo = ({data, convert}) => {
 
     
@@ -15,6 +16,7 @@ const ProductInfo = ({data, convert}) => {
     const [description, setDescription] = useState("")
     const [price, setPrice] = useState("")
     const [user, setUser] = useState(null);
+    const navigate = useNavigate()
 
     useEffect(()=> {
         const product = data?.find((product)=> product.id === id)
@@ -35,6 +37,32 @@ const ProductInfo = ({data, convert}) => {
       return () => unsubscribe()
     }, [])
 
+    const onclickDelete = () => {
+      const respuesta = confirm('seguro que deseas eliminar esto ' + id)
+      if (respuesta) {
+        const fetchData = async () => {
+          try {
+            
+            const response = await fetch("https://fsj-backend.onrender.com/products/" + id, {
+              method: "DELETE",
+            });
+
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+
+            alert("Producto eliminado correctamente.");
+            navigate('/products')
+
+          } catch (err) {
+            console.error("Error al eliminar el producto:", err);
+          }
+        };
+      
+        fetchData();
+      }
+    }
+
 
     return ( 
         <div className='bg-black w-[100vw] h-[100vh] sm:overflow-y-hidden sm:flex sm:items-center sm:justify-center'>
@@ -51,7 +79,7 @@ const ProductInfo = ({data, convert}) => {
                     <p className='text-2xl sm:text-xl'>{convert(price)}</p>
                   </div>
                   <div className='h-[60%] sm:h-[25%]'>
-                    <p className='text-2xl sm:text-base  text-gray-400 break-words'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, dolores, distinctio dolorum iste exercitationem recusandae eligendi commodi quasi fuga fugit aliquid incidunt tempora ipsam aperiam eum</p>
+                    <p className='text-2xl sm:text-base  text-gray-400 break-words'>{description}</p>
                   </div>
                   <div>
                   {user && user.email === "alejodv562@gmail.com" && (
@@ -60,7 +88,7 @@ const ProductInfo = ({data, convert}) => {
                         <img className="h-[40px]" src={editar} alt="" />
                       </button>
                       <button className="bg-white px-4 py-2 border   cursor-pointer rounded-xl">
-                        <img className="h-[40px]" src={eliminar} alt="" />
+                        <img onClick={onclickDelete} className="h-[40px]" src={eliminar} alt="" />
                       </button>
 
                     </div>
