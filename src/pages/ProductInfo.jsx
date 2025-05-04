@@ -78,17 +78,17 @@ const ProductInfo = ({data, convert}) => {
                   <div className='h-[10%] sm:h-[6%]'>
                     <p className='text-2xl sm:text-xl'>{convert(price)}</p>
                   </div>
-                  <div className='h-[60%] sm:h-[25%]'>
-                    <p className='text-2xl sm:text-base  text-gray-400 break-words'>{description}</p>
+                  <div className='h-[60%] sm:h-[18%]'>
+                    <p className='text-2xl sm:text-base text-gray-400 break-words'>{description}</p>
                   </div>
                   <div>
                   {user && user.email === "alejodv562@gmail.com" && (
                     <div className="h-[100px] flex justify-end items-end ">
-                      <button className="bg-white px-4 py-2 border   cursor-pointer rounded-xl mr-5">
-                        <img className="h-[40px]" src={editar} alt="" />
+                      <button className="bg-white px-4 py-2 sm:px-3 sm:py-1.5 border   cursor-pointer rounded-xl mr-5 sm:mr-2 ">
+                        <img className="h-[40px] sm:h-[30px] " src={editar} alt="" />
                       </button>
-                      <button className="bg-white px-4 py-2 border   cursor-pointer rounded-xl">
-                        <img onClick={onclickDelete} className="h-[40px]" src={eliminar} alt="" />
+                      <button className="bg-white px-4 py-2 sm:px-3 sm:py-1.5 border   cursor-pointer rounded-xl">
+                        <img onClick={onclickDelete} className="h-[40px] sm:h-[30px]" src={eliminar} alt="" />
                       </button>
 
                     </div>
