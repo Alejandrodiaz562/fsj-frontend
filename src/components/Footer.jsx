@@ -11,13 +11,13 @@ const Footer = () => {
                 <p className="text-gray-400">321-631-15-42</p>
             </div>
             <div className="mb-4">
-                <h2 className="text-2xl text-white">Ubicaconos</h2>
+                <h2 className="text-2xl text-white">Ubicanos</h2>
                 <a href="https://maps.app.goo.gl/zABYt8JoKC7F5R6dA" className="text-gray-400">Cl. 98 # 69 - 26, Castilla, Medellín, Antioquia</a>
             </div>
             <div className="mb-4">
-                <h2 className="text-2xl text-white">Horarios de antencion</h2>
+                <h2 className="text-2xl text-white">Horarios de atencion</h2>
                 <p className="text-gray-400">Lunes a Sabado de 8 am a 8 pm</p>
-                <p className="text-gray-400">Domingos y Festibo de 8 am a 2 pm</p>
+                <p className="text-gray-400">Domingos y Festivos de 8 am a 2 pm</p>
 
             </div>
         </div>

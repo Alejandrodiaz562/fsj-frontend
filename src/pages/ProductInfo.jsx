@@ -63,6 +63,10 @@ const ProductInfo = ({data, convert}) => {
       }
     }
 
+    const onclickEdit = () => {
+      
+    }
+
 
     return ( 
         <div className='bg-black w-[100vw] h-[100vh] sm:overflow-y-hidden sm:flex sm:items-center sm:justify-center'>
@@ -85,7 +89,7 @@ const ProductInfo = ({data, convert}) => {
                   {user && user.email === "alejodv562@gmail.com" && (
                     <div className="h-[100px] flex justify-end items-end ">
                       <button className="bg-white px-4 py-2 sm:px-3 sm:py-1.5 border   cursor-pointer rounded-xl mr-5 sm:mr-2 ">
-                        <img className="h-[40px] sm:h-[30px] " src={editar} alt="" />
+                        <img onClick={onclickEdit} className="h-[40px] sm:h-[30px] " src={editar} alt="" />
                       </button>
                       <button className="bg-white px-4 py-2 sm:px-3 sm:py-1.5 border   cursor-pointer rounded-xl">
                         <img onClick={onclickDelete} className="h-[40px] sm:h-[30px]" src={eliminar} alt="" />
